@@ -17,18 +17,32 @@ output:
 require(tigerstats)
 require(tidyverse)
 Fish = read.csv("Fish.csv")
+Perch = filter(Fish, Species == "Perch")
+Pike = filter(Fish, Species == "Pike")
+Roach = filter(Fish, Species == "Roach")
 ```
 
 # Predicting Fish Weight
 
+From this graph I see that best two predictions of wt for perch are Lenght and Height. 
 
 ## Perch
+```{r}
+pwt = lm(Weight~ Length1+ Length2, data= Perch)
+summary(pwt)
+```
+
+```{r}
+
+```
+
 
 ### Best Models
+Best model for this case is using all 4 models. 
 
 ### Best Two regressor model
 
-
+From the graph the best two-parameter regressor model is based 
 ## Pike
 
 ### Best Models
