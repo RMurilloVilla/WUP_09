@@ -33,26 +33,89 @@ summary(pwt)
 ```
 
 ```{r}
-
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
+               data = Perch,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+regsubsets.out
 ```
 
+```{r}
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```
 
 ### Best Models
-Best model for this case is using all 4 models. 
+Best model for this case is using all 4 variables. 
 
 ### Best Two regressor model
 
-From the graph the best two-parameter regressor model is based 
+From the graph the best two-parameter regressor model is based on Length and Height. 
 ## Pike
 
+```{r}
+pwt = lm(Weight~ Length1+ Length2, data= Pike)
+summary(pwt)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
+               data = Pike,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+regsubsets.out
+```
+
+```{r}
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```
+
 ### Best Models
+Best model for this case is using all 4 variables. 
 
 ### Best Two regressor model
+
+From the graph the best two-parameter regressor model is based on Length1 and Lenght3. 
 
 ## Roach
 
+```{r}
+pwt = lm(Weight~ Length1+ Length2, data= Roach)
+summary(pwt)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
+               data = Roach,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+regsubsets.out
+```
+
+```{r}
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```
+
 ### Best Models
+Best model for this case is using all 4 variables. 
 
 ### Best Two regressor model
 
+From the graph the best two-parameter regressor model is based on Length1 and Length3.
+
 ## Final Summary Statements
+In conclusion, the best models for all 3 fish is using all 4 variables. The best two regressor model variables for Perch is Length3 & Height. The best two regressor model variables for Pike is Length1 & Length3. The best two regressor model variables for Roach is Length1 & Length3.
